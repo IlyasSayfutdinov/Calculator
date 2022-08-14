@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Calculator</title>
+        <link rel="stylesheet" href="C:\VScodes\calculator\style.css">
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <script src="script.js">
+        </script>
+    </head>
+    <body>
+        <div> <form name="form"><input type="text" name="textview" class="screen" readonly></form></div>
+        <div class="keyboard" id="keyboard">
+            <div class="line">
+                <div class="button operator top" onclick="clean()">C</div>
+                <!-- <div class="button operator" onclick="clean()">C</div> -->
+                <!-- <div class="button operator" >%</div> -->
+                <div class="button operator top" onclick="insert('/')">/</div>
+            </div>
+            <div class="line">
+                <div class="button " onclick="insert(7)">7</div>
+                <div class="button " onclick="insert(8)">8</div>
+                <div class="button " onclick="insert(9)">9</div>
+                <div class="button operator" onclick="insert('*')">&times;</div>
+            </div>
+            <div class="line">
+                <div class="button " onclick="insert(4)">4</div>
+                <div class="button " onclick="insert(5)">5</div>
+                <div class="button " onclick="insert(6)">6</div>
+                <div class="button operator" onclick="insert('-')">-</div>
+            </div>
+            <div class="line">
+                <div class="button" onclick="insert(1)">1</div>
+                <div class="button"  onclick="insert(2)">2</div>
+                <div class="button"  onclick="insert(3)">3</div>
+                <div class="button operator" onclick="insert('+')">+</div>
+            </div>
+            <div class="line">
+                <div class="button " onclick="insert('.')">.</div>
+                <div class="button " onclick="insert(0)">0</div>
+                <div class="button " onclick="back()">⇤</div>
+                <div class="button operator" onclick="equal()">=</div>
+            </div>
+        </div>
+        <script>
+            function insert(num){
+                document.form.textview.value = document.form.textview.value + num
+            }
+            function clean(){document.form.textview.value = ''}
+            function back(){
+                var exp = document.form.textview.value;
+                document.form.textview.value = exp.substring(0, exp.length-1);
+            }
+            function equal() {
+                var exp = document.form.textview.value;
+                if (exp) {
+                    document.form.textview.value = eval(exp);
+                }
+            }
+        </script>
+    </body>
+</html>
